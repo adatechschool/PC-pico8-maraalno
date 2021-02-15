@@ -15,3 +15,4 @@
 
 
 Niveau choisi par le groupe (Nolwenn, Alina, Marie F., Rachel) : Niveau 1
+On va travailler en mob programming à 4.
