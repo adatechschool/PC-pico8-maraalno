@@ -6,9 +6,12 @@ function _init()
 end
 
 function _update()
-	if(btn(➡️)) p.x+=p.speed 
+ if(btn(➡️)) p.x+=p.speed 
 	if(btn(⬅️)) p.x-=p.speed
-
+ if(p.x<0)then 
+  btn(➡️) p.x+=p.speed end
+ if(p.x>96)then
+  btn(⬅️) p.x-=p.speed end
 end
 
 function _draw()
