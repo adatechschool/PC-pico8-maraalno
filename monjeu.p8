@@ -3,7 +3,7 @@ version 29
 __lua__
 function _init()
 	p = {x=60,	y=95, speed = 4}
-	ball={x=60, y=0, speed = 2}
+	ball={x=60, y=0, speedx = 2,speedy=2}
 	
 	
 	
@@ -45,13 +45,26 @@ end
 -- balle
 
 function move_ball()
-		ball.x += ball.speed
-		ball.y += ball.speed	
-	
-	if(ball.x > 120) then 
- ball.x -= ball.speed
- ball.y += ball.speed	
+		
+	if (ball.x > 120) then 
+ 	ball.speedx=-ball.speedx
  end
+ 
+ if (ball.y > 120) then 
+ 	ball.speedy=-ball.speedy
+ end
+ 
+ if (ball.x < 0) then 
+ 	ball.speedx=-ball.speedx
+ end
+ 
+ if (ball.y < 0) then 
+ 	ball.speedy=-ball.speedy
+ end
+ 
+ ball.x += ball.speedx
+	ball.y += ball.speedy	
+	
 end
 	
 --function update_balle()
