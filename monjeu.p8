@@ -3,23 +3,39 @@ version 29
 __lua__
 function _init()
 	p = {x=60,	y=95, speed = 4}
-	b = {x=50, y=0}
+	ball={x=60, y=0, speed = 2}
+	
+	
+	
 end
 
 function _update()
  if(btn(➡️)) p.x+=p.speed 
 	if(btn(⬅️)) p.x-=p.speed
+	
+	--raquette
  if(p.x<0)then 
-  btn(➡️) p.x+=p.speed end
+  btn(➡️) p.x+=p.speed
+ end
  if(p.x>96)then
-  btn(⬅️) p.x-=p.speed end
+  btn(⬅️) p.x-=p.speed 
+ end
+ 
+ move_ball() 
+ 
 end
 
 function _draw()
 	cls()
 	map(0,0,0,0)
+	
+	--raquette
 	spr(8,p.x,p.y,4,4)
-	spr(17,b.x,b.y)
+	
+	--balle
+	spr(17,ball.x,ball.y)
+	
+	 
 end
 
 
@@ -28,13 +44,21 @@ end
 -->8
 -- balle
 
---function move_ball()
---new_ball = {
---x = 
---y =
---speed = 4
---}
---add(
+function move_ball()
+		ball.x += ball.speed
+		ball.y += ball.speed	
+	
+	if(ball.x > 120) then 
+ ball.x -= ball.speed
+ ball.y += ball.speed	
+ end
+end
+	
+--function update_balle()
+--for b in all (balle) do 
+--i.y-=b.speed
+--end
+--end
 __gfx__
 00000000eeeeeeeecccccccc3333333399999999000000001111111100643b000000000000000000000000000000000000000000000000000000000000000000
 00000000e88ee88ecc77cccc33bb3333a99a99a902200220117171710d8ef9a00000000000000000000000000000000000000000000000000000000000000000
