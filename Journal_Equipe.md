@@ -13,3 +13,10 @@ Aujourd'hui nous avons créé la raquette de notre jeu de Pong, puis la balle.
 Nous avons réussi à bloquer la raquette pour qu'elle ne sorte pas de la fenêtre.
 Nous nous sommes ensuite intéressées aux mouvements de la balle.
 Pour le moment nous avons réussi à la faire rebondir sur chaque bord, en boucle.
+
+
+Mercredi 17 février 2021 :
+Après la masterclass nous nous sommes lancées sur la feature Collisions.
+La balle rebondissait déjà sur tous les bords, nous avons donc modifié le code pour qu'elle sorte si elle passe le bord du bas.
+Ensuite nous avons travaillé sur la partie de code qui permet de faire rebondir la balle sur la raquette.
+Pour l'instant ce n'est pas concluant.
