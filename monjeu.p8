@@ -2,8 +2,10 @@ pico-8 cartridge // http://www.pico-8.com
 version 29
 __lua__
 function _init()
-	p = {x=60,	y=95, speed = 4}
-	ball={x=60, y=0, speedx = 2,speedy=2}
+	p = {x=60,	y=95,
+						w=26, h=2, speed = 4}
+	ball={x=60, y=0,
+						r=4, speedx = 2,speedy=2}
 	
 	
 	
@@ -13,7 +15,7 @@ function _update()
  if(btn(➡️)) p.x+=p.speed 
 	if(btn(⬅️)) p.x-=p.speed
 	
-	--raquette
+	--raquette mouvement
  if(p.x<0)then 
   btn(➡️) p.x+=p.speed
  end
@@ -22,6 +24,7 @@ function _update()
  end
  
  move_ball() 
+ collision()
  
 end
 
@@ -50,9 +53,9 @@ function move_ball()
  	ball.speedx=-ball.speedx
  end
  
- if (ball.y > 120) then 
- 	ball.speedy=-ball.speedy
- end
+ //if (ball.y > 120) then 
+ 	//ball.speedy=-ball.speedy
+ //end
  
  if (ball.x < 0) then 
  	ball.speedx=-ball.speedx
@@ -72,6 +75,29 @@ end
 --i.y-=b.speed
 --end
 --end
+-->8
+-- collision
+
+function collision ()
+
+	if((ball.x+4)>p.x) and
+			((ball.x+4)<(p.x+26)) and
+			((ball.y+4)>p.y) and
+			((ball.y+4)<(p.y+2)) then
+			ball.speedy=-ball.speedy
+			ball.speedx=-ball.speedx
+	end
+end
+
+
+
+--if(p.x==ball.x
+-- and p.y==ball.y) then
+	--ball.speedy=-ball.speedy
+	--ball.speedx=-ball.speedx
+--	end
+	
+
 __gfx__
 00000000eeeeeeeecccccccc3333333399999999000000001111111100643b000000000000000000000000000000000000000000000000000000000000000000
 00000000e88ee88ecc77cccc33bb3333a99a99a902200220117171710d8ef9a00000000000000000000000000000000000000000000000000000000000000000
