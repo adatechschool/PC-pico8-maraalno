@@ -19,6 +19,7 @@ function _init()
 	}	
 	
 	p_score = 0
+	g_over = false 
 end
 
 function _update()
@@ -35,9 +36,10 @@ function _update()
  
  move_ball() 
  collision()
- ball_reset()
  player_score()
- 
+ game_over()
+ game_restart()
+ --ball_reset()
 end
 
 function _draw()
@@ -54,8 +56,18 @@ function _draw()
 	-- score
 	print(p_score, 120, 2, 7)
 	print("score :", 90,2,7)
-	 
-end
+	
+	
+-- game over
+
+	if g_over then
+	 print("game over", 50, 50,7)
+	 print("press ❎ to restart", 30,60,7)
+	end
+	end
+	
+	
+	
 
 
 
@@ -124,11 +136,31 @@ end
 -->8
 -- game over
 
-function ball_reset()
+--function ball_reset()
+--	if ball.y>120 then
+--	_init()
+--	end
+--end
+
+function game_over()
 	if ball.y>120 then
-	_init()
+	g_over = true
+	ball.x = 140
+	ball.y = 0
+	ball.speedy = 0
+	ball.speedx = 0
 	end
 end
+
+function game_restart()
+	if g_over then
+		if btnp(❎) then
+		_init()
+		end
+	end
+end
+
+
 -->8
 -- score
 
