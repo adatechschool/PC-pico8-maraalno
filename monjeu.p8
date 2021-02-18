@@ -2,8 +2,8 @@ pico-8 cartridge // http://www.pico-8.com
 version 29
 __lua__
 function _init()
-	p = {x=60,	y=95,
-						w=26, h=2, speed = 4}
+	p = {x=60,	y=120,
+						w=32, h=2, speed = 4}
 	ball={x=60, y=0,
 						r=4, speedx = 2,speedy=2}
 	
@@ -33,7 +33,8 @@ function _draw()
 	map(0,0,0,0)
 	
 	--raquette
-	spr(8,p.x,p.y,4,4)
+	rectfill(p.x,p.y,p.x+p.w,
+	p.y+p.h,7)
 	
 	--balle
 	spr(17,ball.x,ball.y)
@@ -80,10 +81,14 @@ end
 
 function collision ()
 
-	if((ball.x+4)>p.x) and
-			((ball.x+4)<(p.x+26)) and
-			((ball.y+4)>p.y) and
-			((ball.y+4)<(p.y+2)) then
+	if((ball.x+ball.r)>=p.x)
+	 	and
+			((ball.x+ball.r)<=(p.x+p.w))
+			 and
+			((ball.y+ball.r)>=p.y) 
+				and
+			((ball.y+ball.r)<=(p.y+p.h))
+				then
 			ball.speedy=-ball.speedy
 			ball.speedx=-ball.speedx
 	end
