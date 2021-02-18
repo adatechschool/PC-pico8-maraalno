@@ -20,3 +20,12 @@ Après la masterclass nous nous sommes lancées sur la feature Collisions.
 La balle rebondissait déjà sur tous les bords, nous avons donc modifié le code pour qu'elle sorte si elle passe le bord du bas.
 Ensuite nous avons travaillé sur la partie de code qui permet de faire rebondir la balle sur la raquette.
 Pour l'instant ce n'est pas concluant.
+
+
+Jeudi 18 février 2021 :
+Aujourd'hui nous avons bien avancé :
+La collision entre la balle et la raquette fonctionne ! 
+Nous avons également ajouté des sons lors des collisions et du game over.
+Le score s'affiche et s'incrémente à chaque collision balle/raquette.
+Et lorsque l'on rate la balle, la partie s'arrête et un message de Game over et Restart apparait.
+Le bouton pour Restart la partie fonctionne également. 
