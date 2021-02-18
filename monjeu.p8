@@ -3,9 +3,9 @@ version 29
 __lua__
 function _init()
 	p = {x=60,	y=120,
-						w=32, h=2, speed = 4}
+						w=32, h=2, speed = 7}
 	ball={x=60, y=0,
-						r=4, speedx = 2,speedy=2}
+						r=7, speedx = 4,speedy=2}
 	
 	
 	
@@ -89,8 +89,9 @@ function collision ()
 				and
 			((ball.y+ball.r)<=(p.y+p.h))
 				then
-			ball.speedy=-ball.speedy
-			ball.speedx=-ball.speedx
+			ball.speedy=-ball.speedy+0.2
+			ball.speedx=-ball.speedx+0.5
+			
 	end
 end
 
