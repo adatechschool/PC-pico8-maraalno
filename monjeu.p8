@@ -54,13 +54,14 @@ function _draw()
 	circfill(ball.x,ball.y,ball.r,7)
 	 
 	-- score
+	rectfill(87,1,126,8,0)
 	print(p_score, 120, 2, 7)
 	print("score :", 90,2,7)
 	
 	
 -- game over
-
 	if g_over then
+		rectfill(25,45,110,70,0)
 	 print("game over", 50, 50,7)
 	 print("press ❎ to restart", 30,60,7)
 	end
@@ -79,7 +80,6 @@ function move_ball()
 		
 	if (ball.x > 120) then 
  	ball.speedx=-ball.speedx
- 	sfx(1)
  end
  
  //if (ball.y > 120) then 
@@ -88,12 +88,10 @@ function move_ball()
  
  if (ball.x < 0) then 
  	ball.speedx=-ball.speedx
- 	sfx(1)
  end
  
  if (ball.y < 0) then 
  	ball.speedy=-ball.speedy
- 	sfx(1)
  end
  
  ball.x += ball.speedx
@@ -149,6 +147,7 @@ function game_over()
 	ball.y = 0
 	ball.speedy = 0
 	ball.speedx = 0
+	sfx(4)
 	end
 end
 
