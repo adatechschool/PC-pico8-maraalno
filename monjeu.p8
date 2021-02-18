@@ -17,6 +17,8 @@ function _init()
 		speedy=2,
 		speedup=0,5
 	}	
+	
+	p_score = 0
 end
 
 function _update()
@@ -33,6 +35,8 @@ function _update()
  
  move_ball() 
  collision()
+ ball_reset()
+ player_score()
  
 end
 
@@ -46,7 +50,10 @@ function _draw()
 	
 	--balle
 	circfill(ball.x,ball.y,ball.r,7)
-	
+	 
+	-- score
+	print(p_score, 120, 2, 7)
+	print("score :", 90,2,7)
 	 
 end
 
@@ -114,6 +121,29 @@ end
 
 
 
+-->8
+-- game over
+
+function ball_reset()
+	if ball.y>120 then
+	_init()
+	end
+end
+-->8
+-- score
+
+function player_score()
+		if((ball.x)>=p.x+3)
+	 	and
+			((ball.x)<=(p.x+p.w+3))
+			and
+			((ball.y+2)>=p.y) 
+			and
+			((ball.y+2)<=(p.y+p.h))
+			then
+			p_score+=1
+		end
+end
 __gfx__
 00000000eeeeeeeecccccccc3333333399999999000000001111111100643b000000000000000000000000000000000000000000000000000000000000000000
 00000000e88ee88ecc77cccc33bb3333a99a99a902200220117171710d8ef9a00000000000000000000000000000000000000000000000000000000000000000
