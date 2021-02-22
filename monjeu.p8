@@ -17,11 +17,9 @@ function _init()
 		speedy=2,
 		speedup=0.5
 	}	
-	g={
-		x=60,
-		y=-10,
-		speed=3
-	}
+	
+	goodies={}
+	create_goodies()
 	
 	p_score = 0
 	g_over = false 
@@ -44,6 +42,10 @@ function _update()
  player_score()
  game_over()
  game_restart()
+ for g in all(goodies) do 
+	collision_goodies(g)
+	end
+	
  
 end
 
@@ -59,7 +61,9 @@ function _draw()
 	circfill(ball.x,ball.y,ball.r,7)
 	 
 	--goodies
+	for g in all(goodies) do
 	spr(1,g.x,g.y)
+	end
 	
 	-- score
 	rectfill(87,1,126,8,0)
@@ -142,12 +146,6 @@ end
 -->8
 -- game over
 
---function ball_reset()
---	if ball.y>120 then
---	_init()
---	end
---end
-
 function game_over()
 	if ball.y>120 then
 	g_over = true
@@ -185,11 +183,40 @@ end
 -->8
 --goodies
 
+function create_goodies()
+	new_goodie={
+		x=60,
+		y=10,
+		speed=3
+	}
+	add(goodies,new_goodie)
+end
+
 function fall_goodies()
-	if p_score >= 1 then
-	g.y+=g.speed
+	for g in all (goodies) do
+		if p_score >= 1 then
+			g.y+=g.speed
+		end
 	end
 end
+
+function collision_goodies(g)
+	if((g.x)>=p.x+3)
+		and
+		((g.x)<=(p.x+p.w+3))
+		and
+		((g.y+2)>=p.y) 
+		and
+		((g.y+2)<=(p.y+p.h))
+		then
+		del(goodies,g)
+		p.w +=7
+	end
+end
+
+
+		 
+		
 	
 __gfx__
 0000000000eeee00cccccccc3333333399999999000000001111111100643b000000000000000000000000000000000000000000000000000000000000000000
