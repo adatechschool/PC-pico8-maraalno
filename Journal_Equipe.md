@@ -29,3 +29,14 @@ Nous avons également ajouté des sons lors des collisions et du game over.
 Le score s'affiche et s'incrémente à chaque collision balle/raquette.
 Et lorsque l'on rate la balle, la partie s'arrête et un message de Game over et Restart apparait.
 Le bouton pour Restart la partie fonctionne également. 
+
+
+Lundi 22 février 2021 :
+Ce matin nous avons fait de la revue de code.
+Ca nous a permis de déchiffrer le code du jeu d'un autre groupe. 
+On a pu voir des similitudes, des choses complètement nouvelles et faire des suggestions.
+On a aussi eu un oeil neuf sur notre code qui nous a permis d'en optimiser des parties.
+Cette après-midi nous avons attaqué une nouvelle feature pour améliorer notre jeu : ajouter des goodies.
+Ces goodies sont des petits objets qui tombent et qui modifient la taille de la raquette si on les rattrape.
+Feature encore en cours.
+
