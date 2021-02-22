@@ -15,7 +15,7 @@ function _init()
 		r=4, 
 		speedx=4,
 		speedy=2,
-		speedup=0,5
+		speedup=0.5
 	}	
 	
 	p_score = 0
@@ -28,12 +28,11 @@ function _update()
 	
 	--raquette mouvement
  if(p.x<-3)then 
-  btn(➡️) p.x+=p.speed
+  p.x+=p.speed
+ else if(p.x>96)then
+  p.x-=p.speed 
  end
- if(p.x>96)then
-  btn(⬅️) p.x-=p.speed 
  end
- 
  move_ball() 
  collision()
  player_score()
@@ -44,7 +43,7 @@ end
 
 function _draw()
 	cls()
-	map(0,0,0,0)
+	map(0,0)
 	
 	--raquette
 	rectfill(p.x,p.y,p.x+p.w,
@@ -144,7 +143,6 @@ function game_over()
 	if ball.y>120 then
 	g_over = true
 	ball.x = 140
-	ball.y = 0
 	ball.speedy = 0
 	ball.speedx = 0
 	sfx(4)
