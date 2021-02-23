@@ -20,18 +20,19 @@ function _init()
 	
 	goodies={}
 
-	
 	p_score=0
 	g_over=false
 	
 	last=time() 
+	
 end
 
+	-- mouvement raquette
 function _update()
  if(btn(➡️)) p.x+=p.speed 
 	if(btn(⬅️)) p.x-=p.speed
 	
-	--raquette mouvement
+	-- stop raquette cotes 
  if(p.x<-3)then 
   p.x+=p.speed
  else if(p.x>96)then
@@ -40,7 +41,7 @@ function _update()
  end
  move_ball()
  
- --collision raquette 
+ -- collision raquette 
  if collision() then
  	ball.speedy=-ball.speedy
 															+ball.speedup
@@ -53,13 +54,13 @@ function _update()
  player_score()
  game_over()
  game_restart()
+ size_racket()
  
  --collision goodies
  for g in all(goodies) do 
 		if collision_goodies(g) then
 			del(goodies,g)
-			p.w +=4
-			--create_goodies()
+			p.w +=8
 		end
 	end
 
@@ -89,7 +90,7 @@ function _draw()
 	print("score :", 90,2,7)
 	
 	
--- game over
+	-- game over
 	if g_over then
 		rectfill(25,45,110,70,0)
 	 print("game over", 50, 50,7)
@@ -224,7 +225,7 @@ end
 function update_goodies()
 	if (time()-last)>3 then
 		create_goodies()
-		last=time()+rnd(20)
+		last=time()+rnd(5)
 	end
 end
 
@@ -236,7 +237,13 @@ end
 -->8
 --raquette
 
-function enlarge_racket
+function size_racket()
+	if time()>7 and p.w>36
+	then
+		p.w = 36
+		
+	end
+end
 
 __gfx__
 0000000000eeee00cccccccc3333333399999999000000001111111100643b000000000000000000000000000000000000000000000000000000000000000000
