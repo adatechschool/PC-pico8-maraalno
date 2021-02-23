@@ -25,6 +25,7 @@ function _init()
 	
 	last=time() 
 	last_racket=time()
+	last_ball=time()
 	
 end
 
@@ -45,9 +46,8 @@ function _update()
  -- collision raquette 
  if collision() then
  	ball.speedy=-ball.speedy
-															+ball.speedup
-			ball.speedx=-ball.speedx
-															-ball.speedup
+														-ball.speedup
+		ball.speedx+=ball.speedup
 		sfx(3)
 	end
 	
@@ -56,6 +56,7 @@ function _update()
  game_over()
  game_restart()
  size_racket()
+-- speed_ball()
  
  --collision goodies
  for g in all(goodies) do 
@@ -72,8 +73,6 @@ end
 function _draw()
 	cls()
 	map(0,0)
-	print (time())
-	print (last_racket,10,10)
 	--raquette
 	rectfill(p.x,p.y,p.x+p.w,
 	p.y+p.h,7)
@@ -115,10 +114,6 @@ function move_ball()
  	ball.speedx=-ball.speedx
  end
  
- //if (ball.y > 120) then 
- 	//ball.speedy=-ball.speedy
- //end
- 
  if (ball.x < 0) then 
  	ball.speedx=-ball.speedx
  end
@@ -132,11 +127,13 @@ function move_ball()
 		
 	
 end
+
+--function speed_ball()
+	--if (time() - last_ball)>5 then
 	
---function update_balle()
---for b in all (balle) do 
---i.y-=b.speed
---end
+	
+--	last_ball=time()
+	--end
 --end
 -->8
 -- collision
@@ -214,9 +211,9 @@ end
 
 
 function collision_goodies(g)
-	if((g.x)>=p.x+3)
+	if((g.x+3)>=p.x)
 		and
-		((g.x)<=(p.x+p.w+3))
+		((g.x)<=(p.x+p.w))
 		and
 		((g.y+7)>=p.y) 
 		and
