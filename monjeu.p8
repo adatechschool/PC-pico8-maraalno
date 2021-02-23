@@ -19,10 +19,12 @@ function _init()
 	}	
 	
 	goodies={}
-	create_goodies()
+
 	
-	p_score = 0
-	g_over = false 
+	p_score=0
+	g_over=false
+	
+	last=time() 
 end
 
 function _update()
@@ -36,17 +38,33 @@ function _update()
   p.x-=p.speed 
  end
  end
- move_ball() 
- collision()
+ move_ball()
+ 
+ --collision raquette 
+ if collision() then
+ 	ball.speedy=-ball.speedy
+															+ball.speedup
+			ball.speedx=-ball.speedx
+															-ball.speedup
+		sfx(3)
+	end
+	
 	fall_goodies()
  player_score()
  game_over()
  game_restart()
- for g in all(goodies) do 
-	collision_goodies(g)
-	end
-	
  
+ --collision goodies
+ for g in all(goodies) do 
+		if collision_goodies(g) then
+			del(goodies,g)
+			p.w +=4
+			--create_goodies()
+		end
+	end
+
+
+update_goodies()
 end
 
 function _draw()
@@ -130,13 +148,9 @@ function collision ()
 			and
 			((ball.y+2)<=(p.y+p.h))
 			then
-			ball.speedy=-ball.speedy
-															+ball.speedup
-			ball.speedx=-ball.speedx
-															-ball.speedup
-		--	p.w = p.w+9
-		sfx(3)
-			
+				return true 
+			else 
+				return false		
 	end
 end
 
@@ -169,14 +183,7 @@ end
 -- score
 
 function player_score()
-		if((ball.x)>=p.x+3)
-	 	and
-			((ball.x)<=(p.x+p.w+3))
-			and
-			((ball.y+2)>=p.y) 
-			and
-			((ball.y+2)<=(p.y+p.h))
-			then
+		if collision() then
 			p_score+=1
 		end
 end
@@ -185,8 +192,8 @@ end
 
 function create_goodies()
 	new_goodie={
-		x=60,
-		y=10,
+		x=rnd(120),
+		y=-10,
 		speed=3
 	}
 	add(goodies,new_goodie)
@@ -194,30 +201,43 @@ end
 
 function fall_goodies()
 	for g in all (goodies) do
-		if p_score >= 1 then
-			g.y+=g.speed
-		end
+		g.y+=g.speed
 	end
 end
+
 
 function collision_goodies(g)
 	if((g.x)>=p.x+3)
 		and
 		((g.x)<=(p.x+p.w+3))
 		and
-		((g.y+2)>=p.y) 
+		((g.y+7)>=p.y) 
 		and
-		((g.y+2)<=(p.y+p.h))
+		((g.y+7)<=(p.y+p.h))
 		then
-		del(goodies,g)
-		p.w +=7
+			return true 
+		else 
+			return false 
 	end
 end
+
+function update_goodies()
+	if (time()-last)>3 then
+		create_goodies()
+		last=time()+rnd(20)
+	end
+end
+
 
 
 		 
 		
 	
+-->8
+--raquette
+
+function enlarge_racket
+
 __gfx__
 0000000000eeee00cccccccc3333333399999999000000001111111100643b000000000000000000000000000000000000000000000000000000000000000000
 00000000088ee880cc77cccc33bb3333a99a99a902200220117171710d8ef9a00000000000000000000000000000000000000000000000000000000000000000
