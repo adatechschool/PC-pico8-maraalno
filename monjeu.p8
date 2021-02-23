@@ -24,6 +24,7 @@ function _init()
 	g_over=false
 	
 	last=time() 
+	last_racket=time()
 	
 end
 
@@ -71,7 +72,8 @@ end
 function _draw()
 	cls()
 	map(0,0)
-	
+	print (time())
+	print (last_racket,10,10)
 	--raquette
 	rectfill(p.x,p.y,p.x+p.w,
 	p.y+p.h,7)
@@ -167,6 +169,7 @@ function game_over()
 	ball.x = 140
 	ball.speedy = 0
 	ball.speedx = 0
+	p.x=140
 	sfx(4)
 	end
 end
@@ -201,8 +204,11 @@ function create_goodies()
 end
 
 function fall_goodies()
-	for g in all (goodies) do
-		g.y+=g.speed
+	if not g_over then
+		for g in all (goodies) do
+		
+			g.y+=g.speed
+		end
 	end
 end
 
@@ -238,10 +244,10 @@ end
 --raquette
 
 function size_racket()
-	if time()>7 and p.w>36
+	if (time()-last_racket)>=7 and p.w>36
 	then
 		p.w = 36
-		
+		last_racket=time()
 	end
 end
 
