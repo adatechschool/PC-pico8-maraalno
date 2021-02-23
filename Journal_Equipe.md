@@ -40,3 +40,9 @@ Cette après-midi nous avons attaqué une nouvelle feature pour améliorer notre
 Ces goodies sont des petits objets qui tombent et qui modifient la taille de la raquette si on les rattrape.
 Feature encore en cours.
 
+
+Mardi 23 février 2021 :
+Nos goodies tombent de façon aléatoires.
+La barre s'agrandit lorsqu'on attrape un goodie et reprend sa taille d'origine quelques secondes après.
+On a corrigé la trajectoire de balle qui était trop prévisible et on a incrémenté sa vitesse pendant la durée du jeu.
+
