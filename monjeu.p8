@@ -164,12 +164,15 @@ end
 
 function game_over()
 	if ball.y>120 then
+		if g_over == false then
+			sfx(4)
+		end
 		g_over = true
 		ball.x = 140
 		ball.speedy = 0
 		ball.speedx = 0
 		p.x=140
-		sfx(4)
+	
 	end
 end
 
