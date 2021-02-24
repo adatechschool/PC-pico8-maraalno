@@ -41,6 +41,7 @@ function _update()
   p.x-=p.speed 
  end
  end
+ 
  move_ball()
  
  -- collision raquette 
@@ -51,18 +52,19 @@ function _update()
 		sfx(3)
 	end
 	
-	fall_goodies()
- player_score()
- game_over()
- game_restart()
- size_racket()
--- speed_ball()
+fall_goodies()
+player_score()
+game_over()
+game_restart()
+size_racket()
+--speed_ball()
  
  --collision goodies
  for g in all(goodies) do 
 		if collision_goodies(g) then
 			del(goodies,g)
 			p.w +=8
+			sfx(5)
 		end
 	end
 
@@ -95,9 +97,9 @@ function _draw()
 	if g_over then
 		rectfill(25,45,110,70,0)
 	 print("game over", 50, 50,7)
-	 print("press ❎ to restart", 30,60,7)
+		print("press ❎ to restart", 30,60,7)
 	end
-	end
+end
 	
 	
 	
@@ -162,12 +164,12 @@ end
 
 function game_over()
 	if ball.y>120 then
-	g_over = true
-	ball.x = 140
-	ball.speedy = 0
-	ball.speedx = 0
-	p.x=140
-	sfx(4)
+		g_over = true
+		ball.x = 140
+		ball.speedy = 0
+		ball.speedx = 0
+		p.x=140
+		sfx(4)
 	end
 end
 
@@ -546,3 +548,4 @@ __sfx__
 00010000317502c750287502375020750207502175025750267502d75035740000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 000200000c550155501b5501d5501f5401e5301952012510000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 0005000016510175101751015520105200f520115201353012530105300c53008540085400b5400c5400a54007540045400555006550065500455002550015500055000550005500650007500075000650003500
+0003000030050300503105033050370503a0500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
