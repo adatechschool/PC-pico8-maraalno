@@ -51,8 +51,8 @@ function _update()
  -- collision raquette 
  if collision() then
  	ball.speedy=-ball.speedy
-														-ball.speedup
-		ball.speedx+=ball.speedup
+													--ball.speedup
+		--ball.speedx+=ball.speedup
 		sfx(3)
 	end
 	
@@ -65,6 +65,8 @@ size_racket()
 fall_goodiesmalus()
 update_goodiesmalus()
 update_goodies()
+
+speed_ball()
  
  --collision goodies
  for g in all(goodies) do 
@@ -88,6 +90,9 @@ end
 function _draw()
 	cls()
 	map(0,0)
+	print(ball.speedx)
+	print(ball.speedy,0,10)
+	print(last_ball,0,20)
 	--raquette
 	rectfill(p.x,p.y,p.x+p.w,
 	p.y+p.h,7)
@@ -149,13 +154,24 @@ function move_ball()
 	
 end
 
---function speed_ball()
-	--if (time() - last_ball)>5 then
+function speed_ball()
+	if (time() - last_ball)>10 then
+		last_ball=time()
+			if ball.speedx>0 then 
+				ball.speedx+=ball.speedup
+			else  
+				ball.speedx+=-ball.speedup
+			end
+			if ball.speedy>0 then 
+				ball.speedy+=ball.speedup
+			else 
+				ball.speedy+=-ball.speedup
+			end
+	end
+end
 	
 	
---	last_ball=time()
-	--end
---end
+	
 -->8
 -- collision
 
@@ -182,7 +198,7 @@ end
 -- game over
 
 function game_over()
-	if ball.y>120 then
+	if ball.y>128 then
 		if g_over == false then
 			sfx(4)
 		end
