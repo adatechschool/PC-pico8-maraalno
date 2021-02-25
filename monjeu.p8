@@ -95,9 +95,10 @@ function _draw()
 	
 	-- game over
 	if g_over then
-		rectfill(25,45,110,70,0)
-	 print("game over", 50, 50,7)
-		print("press ❎ to restart", 30,60,7)
+		rectfill(18,45,110,70,0)
+	 print("game over", 48, 50,7)
+		print("press ❎ to restart",
+								 28,60,7)
 	end
 end
 	
