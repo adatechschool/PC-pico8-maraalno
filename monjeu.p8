@@ -13,9 +13,9 @@ function _init()
 		x=60, 
 		y=0,
 		r=4, 
-		speedx=4,
-		speedy=2,
-		speedup=0.5
+		speedx=2,
+		speedy=1.5,
+		speedup=0.2+rnd(0.5)
 	}	
 	
 	goodies={}
@@ -32,7 +32,7 @@ function _init()
 end
 
 	
-function _update()
+function _update60()
 
 -- mouvement raquette
  if(btn(➡️)) p.x+=p.speed 
@@ -90,9 +90,6 @@ end
 function _draw()
 	cls()
 	map(0,0)
-	print(ball.speedx)
-	print(ball.speedy,0,10)
-	print(last_ball,0,20)
 	--raquette
 	rectfill(p.x,p.y,p.x+p.w,
 	p.y+p.h,7)
@@ -155,7 +152,8 @@ function move_ball()
 end
 
 function speed_ball()
-	if (time() - last_ball)>10 then
+	if (time() - last_ball)>10
+	and not g_over then
 		last_ball=time()
 			if ball.speedx>0 then 
 				ball.speedx+=ball.speedup
@@ -177,9 +175,9 @@ end
 
 function collision ()
 
-	if((ball.x)>=p.x+3)
+	if((ball.x)>=p.x)
 	 	and
-			((ball.x)<=(p.x+p.w+3))
+			((ball.x)<=(p.x+p.w+5))
 			and
 			((ball.y+2)>=p.y) 
 			and
@@ -235,7 +233,7 @@ function create_goodies()
 	new_goodie={
 		x=rnd(120),
 		y=-10,
-		speed=3
+		speed=1.7
 	}
 	add(goodies,new_goodie)
 end
@@ -296,7 +294,7 @@ function create_goodiesmalus()
 	new_goodie={
 		x=rnd(120),
 		y=-10,
-		speed=4
+		speed=2
 	}
 	add(goodies_malus,new_goodie)
 end
